@@ -9,7 +9,6 @@ import (
 	"testing"
 )
 
-// const apiBaseURL = "https://pub.dbaas.postgrespro.ru"
 
 var (
 	apiBaseURL   string
