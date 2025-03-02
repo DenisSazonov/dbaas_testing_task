@@ -8,7 +8,7 @@ import (
     "testing"
 )
 
-
+// makeRequest создает и отправляет HTTP-запрос с указанным методом, URL, телом и заголовками. Возвращает HTTP-ответ
 func makeRequest(t *testing.T, method, url string, body interface{}, headers map[string]string) (*http.Response, error) {
     var bodyReader io.Reader
     if body != nil {
@@ -36,7 +36,7 @@ func makeRequest(t *testing.T, method, url string, body interface{}, headers map
 
     return resp, err
 }
-
+// Читает и разбирает JSON-ответ
 func parseResponseBody(t *testing.T, resp *http.Response, result interface{}) {
     defer resp.Body.Close()
     bodyBytes, err := io.ReadAll(resp.Body)
