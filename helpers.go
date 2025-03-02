@@ -35,7 +35,9 @@ func init() {
 	login = os.Getenv("API_LOGIN")
 	password = os.Getenv("API_PASSWORD")
 }
-// Функция для получения flavorId по имени
+// Функция для получения flavorId по имени, выглядит коряво, но в контексте тестового задания это не критично
+// В реальном проекте можно было бы сделать запрос на получение flavorId используя что-то в стиле pytest.mark.parametrize
+// Тоже самое касается и функции GetTypeID
 func GetFlavorID(t *testing.T) string {
 	// Создание запроса
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/api/flavors", apiBaseURL), nil)
@@ -121,7 +123,7 @@ func GetTypeID(t *testing.T) string {
     return ""
 }
 
-// Функция для удаления кластера, используется для очистки после тестов
+// Функция для удаления дампа БД и кластера, используется для очистки после тестов
 func Teardown(t *testing.T) {
 	// Создание запроса на удаление дампа
 	dumpReq, err := http.NewRequest(
